@@ -1,6 +1,6 @@
 # bmi_calculator
 
-A new Flutter project.
+![dribbble_post](https://github.com/ahmedjarad0/bmi_calculator/assets/113943692/3d6234ae-fcb5-4763-aeae-aa09c015a0f3)
 
 ## Getting Started
 
