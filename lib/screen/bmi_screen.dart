@@ -1,5 +1,6 @@
 import 'package:bmi_calculator/constant.dart';
 import 'package:bmi_calculator/model/dmi_brain.dart';
+import 'package:bmi_calculator/screen/result_screen.dart';
 import 'package:flutter/material.dart';
 
 class BmiScreen extends StatefulWidget {
@@ -12,9 +13,7 @@ class BmiScreen extends StatefulWidget {
 class _BmiScreenState extends State<BmiScreen> {
   Gender? selectedGender;
   int height = 185;
-
   int weight = 74;
-
   int age = 19;
 
   @override
@@ -135,7 +134,7 @@ class _BmiScreenState extends State<BmiScreen> {
                   children: [
                     Text(
                       height.toString(),
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
@@ -312,20 +311,11 @@ class _BmiScreenState extends State<BmiScreen> {
           ElevatedButton(
             onPressed: () {
               BmiBrain bmiBrain = BmiBrain(height, weight);
-              print(bmiBrain.calculateBMI());
-              print(bmiBrain.checkBMI());
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(bmiBrain.checkBMI()),
-                    Text(bmiBrain.calculateBMI().roundToDouble().toString()),
-                  ],
-                ),
-
-                backgroundColor: kBackground,
-                duration: const Duration(seconds: 2),
-              ));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ResultScreen(bmiBrain: bmiBrain),
+                  ));
             },
             style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xffFF0067),
